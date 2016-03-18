@@ -1,7 +1,14 @@
 FROM ubuntu:trusty
 MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com
 
-RUN apt-get update && apt-get install -y python-pip && pip install awscli
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y \
+      python-pip \
+      wget \
+      ca-certificates \
+      && \
+    rm -r /var/lib/apt/lists/* && \
+    pip install awscli
 
 ADD backup.sh /backup.sh
 ADD restore.sh /restore.sh

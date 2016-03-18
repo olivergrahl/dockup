@@ -19,3 +19,8 @@ aws s3 --region $AWS_DEFAULT_REGION cp $tarball s3://$S3_BUCKET_NAME/$tarball
 
 # Clean up
 rm $tarball
+
+# Send alive signal after successful backup
+if [ -n "$ALIVE_URL" ]; then
+  wget --no-verbose --user $ALIVE_USERNAME --password $ALIVE_PASSWORD $ALIVE_URL -O /dev/null
+fi
