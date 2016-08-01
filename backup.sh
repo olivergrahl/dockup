@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 export PATH=$PATH:/usr/bin:/usr/local/bin:/bin
 # Get timestamp
 : ${BACKUP_SUFFIX:=.$(date +"%Y-%m-%d-%H-%M-%S")}
